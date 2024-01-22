@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp_ui/pages/chat_page.dart';
 
 class ChatsWidget extends StatelessWidget {
   @override
@@ -13,7 +14,14 @@ class ChatsWidget extends StatelessWidget {
           children: [
             for (int i = 1; i < 8; i++)
               InkWell(
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ChatPage(),
+                    ),
+                  );
+                },
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),

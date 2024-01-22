@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp_ui/pages/settings_page.dart';
 import 'package:whatsapp_ui/widgets/Callswidget.dart';
 import 'package:whatsapp_ui/widgets/ChatsWidget.dart';
 import 'package:whatsapp_ui/widgets/StatusWidget.dart';
@@ -38,6 +39,20 @@ class WhatsappUi extends StatelessWidget {
                 ),
               ),
               PopupMenuButton(
+                onSelected: (SelectedContent) {
+                  print(SelectedContent.toString());
+                  if (SelectedContent == 5) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => SettingsPage(),
+                      ),
+                    );
+                    // Navigator.pushNamed(context, "SettingsPage");
+                  } else if (SelectedContent == 4) {
+                    print("===============> we are at starred");
+                  }
+                },
                 padding: EdgeInsets.symmetric(vertical: 20),
                 iconSize: 28,
                 itemBuilder: (context) => [
@@ -82,7 +97,7 @@ class WhatsappUi extends StatelessWidget {
                     ),
                   ),
                   const PopupMenuItem(
-                    value: 1,
+                    value: 5,
                     child: Text(
                       "Settings",
                       style: TextStyle(
@@ -174,11 +189,16 @@ class WhatsappUi extends StatelessWidget {
                   //tab 3 status widget
                   statusWidget(),
                   //tab 4
-                 CallsWidget(),
+                  CallsWidget(),
                 ],
               ),
             ),
           ],
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {},
+          backgroundColor: Color(0xFF075E55),
+          child: Icon(Icons.message),
         ),
       ),
     );

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp_ui/pages/chat_page.dart';
 import 'package:whatsapp_ui/pages/home_page.dart';
+import 'package:whatsapp_ui/pages/settings_page.dart';
 
 void main() {
   runApp(const Home());
@@ -12,12 +14,24 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Whatsapp',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
-        useMaterial3: true,
+        scaffoldBackgroundColor: Colors.white,
+        appBarTheme: AppBarTheme(
+          color: Colors.green,
+        ),
+        bottomSheetTheme: BottomSheetThemeData(
+          backgroundColor: Colors.black.withOpacity(0),
+        ),
       ),
-      home: WhatsappUi(),
+      routes: {
+        "/": (context) => WhatsappUi(),
+        "settingsPage": (context) => SettingsPage(),
+        "chatPage": (context) => ChatPage(),
+      },
     );
   }
 }
+
+
